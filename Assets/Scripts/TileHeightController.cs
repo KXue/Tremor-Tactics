@@ -44,9 +44,16 @@ public class TileHeightController : MonoBehaviour {
 	private void UpdateHeight(){
 		m_TileHeight = 1 + (m_StepAmplitude * (sbyte)m_HeightState);
 		float upOffset = (m_StepAmplitude * (sbyte)m_HeightState) / 2f;
+		float existingX = transform.localPosition.x;
+		float existingZ = transform.localPosition.z;
+		transform.localScale = new Vector3(1f, m_TileHeight, 1f);
+		
+		transform.localPosition = new Vector3(existingX, upOffset, existingZ);
+		/*
 		m_BaseTile.transform.localScale = new Vector3(1f, m_TileHeight, 1f);
-		m_BaseTile.transform.localPosition = new Vector3(0f, 0.5f + upOffset, 0f);
-		m_TileRing.transform.localPosition = new Vector3(0f, m_TileHeight, 0f);
+		m_BaseTile.transform.localPosition = new Vector3(0f, upOffset, 0f);
+		m_TileRing.transform.localPosition = new Vector3(0f, m_TileHeight - 0.5f, 0f);
+		*/
 	}
 
 	

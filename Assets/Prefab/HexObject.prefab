@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4831842051916588}
   - component: {fileID: 114165910994539360}
   - component: {fileID: 114260499554261820}
+  - component: {fileID: 64436593096120916}
   m_Layer: 0
   m_Name: HexObject
   m_TagString: Untagged
@@ -57,7 +58,6 @@ GameObject:
   - component: {fileID: 33612406788753290}
   - component: {fileID: 23607669091845816}
   - component: {fileID: 95491550284173148}
-  - component: {fileID: 64685357602318226}
   m_Layer: 0
   m_Name: HexBase
   m_TagString: Untagged
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808032629701090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4831842051916588}
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496212998656282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4831842051916588}
@@ -182,12 +182,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808032629701090}
   m_Mesh: {fileID: 4300000, guid: fe4c7b8d52b73e346a232364efb4a536, type: 3}
---- !u!64 &64685357602318226
+--- !u!64 &64436593096120916
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1808032629701090}
+  m_GameObject: {fileID: 1343381703563610}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BaseTile: {fileID: 1808032629701090}
   m_TileRing: {fileID: 1496212998656282}
-  m_StepAmplitude: 0.2
-  m_HeightState: -2
+  m_StepAmplitude: 0.4
+  m_HeightState: 0
 --- !u!114 &114260499554261820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,3 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5620e3ceb8d3ccb45870ac5b8ebeb926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  m_BaseMesh: {fileID: 23607669091845816}
+  m_Highlight: 0

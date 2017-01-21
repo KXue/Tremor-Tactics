@@ -1359,6 +1359,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114165910994539360, guid: 8d5e6060ad633af4c986dd79cdd1a262,
+        type: 2}
+      propertyPath: m_HeightState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d5e6060ad633af4c986dd79cdd1a262, type: 2}
   m_IsPrefabParent: 0
@@ -1876,6 +1881,11 @@ Prefab:
     - target: {fileID: 1343381703563610, guid: 8d5e6060ad633af4c986dd79cdd1a262, type: 2}
       propertyPath: m_Name
       value: HexObject (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114260499554261820, guid: 8d5e6060ad633af4c986dd79cdd1a262,
+        type: 2}
+      propertyPath: m_Highlight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d5e6060ad633af4c986dd79cdd1a262, type: 2}
@@ -3421,8 +3431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62eb45f53bdc5a418d93a8c3b6cabc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
+  m_Width: 0
+  m_Height: 0
+  m_Blanks: 
 --- !u!1001 &1440974072
 Prefab:
   m_ObjectHideFlags: 0
@@ -3516,6 +3527,16 @@ Prefab:
     - target: {fileID: 1343381703563610, guid: 8d5e6060ad633af4c986dd79cdd1a262, type: 2}
       propertyPath: m_Name
       value: HexObject (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114165910994539360, guid: 8d5e6060ad633af4c986dd79cdd1a262,
+        type: 2}
+      propertyPath: m_HeightState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114260499554261820, guid: 8d5e6060ad633af4c986dd79cdd1a262,
+        type: 2}
+      propertyPath: m_Highlight
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d5e6060ad633af4c986dd79cdd1a262, type: 2}
