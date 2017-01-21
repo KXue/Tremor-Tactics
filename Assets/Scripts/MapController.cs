@@ -19,11 +19,20 @@ public class MapController : MonoBehaviour {
 	}
 	private void GenerateMap(){
 		m_Map = new Dictionary<string, GameObject>();
+		//fill in the blanks with null
 		for(int i = 0; i < m_Blanks.Length; i+=2){
 			m_Map.Add(GeneratePositionString(m_Blanks[i], m_Blanks[i+1]), null);
 		}
-
+		
+		for(int i = 0; i < m_Width; i++){
+			for(int j = 0; j < m_Height; j++){
+				if(!m_Map.ContainsKey(GeneratePositionString(i, j))){
+					//Create a hex here;
+				}
+			}
+		}
 	}
+	private 
 	private string GeneratePositionString(int x, int y){
 		return (x + "," + y);
 	}
