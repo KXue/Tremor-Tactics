@@ -6,10 +6,21 @@ public enum HeightStep : sbyte {Trough = -2, Down, Middle, Up, Crest};
 public class TileHeightController : MonoBehaviour {
 	public float m_StepAmplitude;
 	public HeightStep m_HeightState;
+	public HeightStep HeightState{
+		get{return m_HeightState;}
+		set{m_HeightState = value;
+			if(m_HeightState == HeightStep.Crest){
+				m_IsIncrementing = false;
+			}
+			else if(m_HeightState == HeightStep.Trough){
+				m_IsIncrementing = true;
+			}
+		}
+	}
 	public GameObject m_BaseModel;
 	public GameObject m_TopModel;
-	private float m_TileHeight;
-	private bool m_IsIncrementing = true;
+	private bool m_IsIncrementing = false;
+	private bool m_CycleComplete = true;
 	private static float m_DefaultTileHeight = 1f;
 	// Use this for initialization
 	void Start () {
@@ -20,30 +31,34 @@ public class TileHeightController : MonoBehaviour {
 	void Update () {
 	}
 
-	public void NextStep(){
-		if(m_IsIncrementing){
-			m_HeightState++;
-			if(m_HeightState == HeightStep.Crest){
+	public void NextCycleStep(){
+		if(!m_CycleComplete){
+			if(m_IsIncrementing){
+				HeightState++;
+			}
+			else{
+				HeightState--;
+			}
+			UpdateHeight();
+			if(HeightState == HeightStep.Middle && !m_IsIncrementing && !m_CycleComplete){
+				m_CycleComplete = true;
 				m_IsIncrementing = false;
 			}
 		}
-		else{
-			m_HeightState--;
-			if(m_HeightState == HeightStep.Trough){
-				m_IsIncrementing = true;
-			}
-		}
-		UpdateHeight();
+		
+	}
+	public void BeginCycle(){
+		m_CycleComplete = false;
 	}
 
 	public float GetTileHeight(){
-		return m_TileHeight;
+		return  m_DefaultTileHeight + (m_StepAmplitude * (sbyte)HeightState);
 	}
 	private void UpdateHeight(){
-		m_TileHeight = m_DefaultTileHeight + (m_StepAmplitude * (sbyte)m_HeightState);
-		float upOffset = (m_StepAmplitude * (sbyte)m_HeightState) / 2f;
+		float tileHeight = m_DefaultTileHeight + (m_StepAmplitude * (sbyte)HeightState);
+		float upOffset = (m_StepAmplitude * (sbyte)HeightState) / 2f;
 
-		m_BaseModel.transform.localScale = new Vector3(1f, m_TileHeight, 1f);
+		m_BaseModel.transform.localScale = new Vector3(1f, tileHeight, 1f);
 
 		m_BaseModel.transform.localPosition = new Vector3(0, upOffset, 0);
 
