@@ -4,14 +4,13 @@ using UnityEngine;
 
 public enum HeightStep : sbyte {Trough = -2, Down, Middle, Up, Crest};
 public class TileHeightController : MonoBehaviour {
-
-	public GameObject m_BaseTile;
-	public GameObject m_TileRing;
-	/*[HideInInspector]*/ public float m_StepAmplitude;
-	/*[HideInInspector]*/public HeightStep m_HeightState;
-
+	public float m_StepAmplitude;
+	public HeightStep m_HeightState;
+	public GameObject m_BaseModel;
+	public GameObject m_TopModel;
 	private float m_TileHeight;
 	private bool m_IsIncrementing = true;
+	private static float m_DefaultTileHeight = 1f;
 	// Use this for initialization
 	void Start () {
 		UpdateHeight();
@@ -19,7 +18,6 @@ public class TileHeightController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	public void NextStep(){
@@ -42,17 +40,20 @@ public class TileHeightController : MonoBehaviour {
 		return m_TileHeight;
 	}
 	private void UpdateHeight(){
-		m_TileHeight = 1 + (m_StepAmplitude * (sbyte)m_HeightState);
+		m_TileHeight = m_DefaultTileHeight + (m_StepAmplitude * (sbyte)m_HeightState);
 		float upOffset = (m_StepAmplitude * (sbyte)m_HeightState) / 2f;
+
+		m_BaseModel.transform.localScale = new Vector3(1f, m_TileHeight, 1f);
+
+		m_BaseModel.transform.localPosition = new Vector3(0, upOffset, 0);
+
+		m_TopModel.transform.localPosition = new Vector3(0, 2 * upOffset, 0);
+		/*
 		float existingX = transform.localPosition.x;
 		float existingZ = transform.localPosition.z;
 		transform.localScale = new Vector3(1f, m_TileHeight, 1f);
 		
 		transform.localPosition = new Vector3(existingX, upOffset, existingZ);
-		/*
-		m_BaseTile.transform.localScale = new Vector3(1f, m_TileHeight, 1f);
-		m_BaseTile.transform.localPosition = new Vector3(0f, upOffset, 0f);
-		m_TileRing.transform.localPosition = new Vector3(0f, m_TileHeight - 0.5f, 0f);
 		*/
 	}
 
